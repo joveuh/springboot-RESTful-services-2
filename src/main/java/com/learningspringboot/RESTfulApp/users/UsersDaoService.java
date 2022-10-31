@@ -16,11 +16,12 @@ import org.springframework.stereotype.Component;
 public class UsersDaoService {
 
     private static List<User> users = new ArrayList<>();
+    private static int usersCount = 0;
 
     static {
-        users.add(new User(1, "Uzair", LocalDate.of(1990, 12, 14)));
-        users.add(new User(2, "Subject", LocalDate.of(1980, 12, 12)));
-        users.add(new User(3, "User", LocalDate.of(1995, 04, 04)));
+        users.add(new User(++usersCount, "Uzair", LocalDate.of(1990, 12, 14)));
+        users.add(new User(++usersCount, "Subject", LocalDate.of(1980, 12, 12)));
+        users.add(new User(++usersCount, "User", LocalDate.of(1995, 04, 04)));
     }
 
     public List<User> findAll() {
@@ -35,6 +36,12 @@ public class UsersDaoService {
             return "User could not be added";
             // throw e;
         }
+    }
+
+    public User save(User user){
+        user.setId(++usersCount);
+        users.add(user);
+        return user;
     }
 
     public User findUser(int id){
