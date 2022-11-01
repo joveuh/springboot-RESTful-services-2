@@ -2,9 +2,17 @@ package com.learningspringboot.RESTfulApp.users;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 public class User {
+
     private Integer Id;
+
+    @Size(min=2, max=50)
     private String name;
+
+    @Past
     private LocalDate birthDate;
 
     public User(Integer id, String name, LocalDate birthDate) {
