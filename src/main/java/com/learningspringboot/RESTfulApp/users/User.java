@@ -8,7 +8,7 @@ public class User {
 
     private Integer Id;
 
-    @Size(min=2, max=50)
+    @Size(min=2, max=50, message = "Name should be between 2-50")
     private String name;
 
     @Past(message = "Birthday should not be in the future")
