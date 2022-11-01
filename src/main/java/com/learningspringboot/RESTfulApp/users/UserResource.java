@@ -3,7 +3,6 @@ package com.learningspringboot.RESTfulApp.users;
 import java.net.URI;
 import java.util.List;
 
-import org.springframework.beans.factory.parsing.Location;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,9 @@ public class UserResource {
 
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id) {
-        return service.findOne(id);
+        User user = service.findOne(id);
+        if (user == null) throw new UserNotFoundException("\n\nUser with id "+id+" not found.\n\n");
+        return user;
     }
 
     @PostMapping("users")
