@@ -3,13 +3,12 @@ package com.learningspringboot.RESTfulApp.users;
 import java.net.URI;
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -44,5 +43,21 @@ public class UserResourceController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
                 .toUri();
         return ResponseEntity.created(location).body(savedUser);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable int id) {
+        User user = service.deleteOne(id);
+        if (user == null) throw new UserNotFoundException("User with id " + id + " not found.");
+        return ResponseEntity.accepted().body(user);
+    }
+
+    // If you issue request to http://localhost:8091/users/ it will fail.. it needs to be made to http://localhost:8091/users
+    @DeleteMapping("/users")
+    public ResponseEntity<List<Integer>> deleteAllUsers() {
+        List<Integer> deletedUsers = service.deleteAll();
+        if (deletedUsers == null || deletedUsers.size() < 1) throw new UserNotFoundException("No more users remain.");
+        // System.out.print(String.format("\n\n %s \n\n", deletedUsers.toString()));
+        return ResponseEntity.accepted().body(deletedUsers);
     }
 }

@@ -8,6 +8,8 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
+import com.learningspringboot.RESTfulApp.exception.UserNotFoundException;
+
 /**
  * DAO stands for Data Access Object
  */
@@ -56,6 +58,20 @@ public class UsersDaoService {
     public User findOne(int id) {
         Predicate<? super User> predicate = user -> user.getId().equals(id); 
         return users.stream().filter(predicate).findFirst().orElse(null);
+    }
+
+    public User deleteOne(int id) {
+        Predicate<? super User> predicate = user -> user.getId().equals(id); 
+        User user = users.stream().filter(predicate).findFirst().orElse(null);
+        users.removeIf(predicate);
+        return user;
+    }
+
+    public List<Integer> deleteAll() {
+        List<Integer> deletedUsers = new ArrayList<>();
+        users.forEach(a -> deletedUsers.add(a.getId()));
+        users.clear();
+        return deletedUsers;
     }
     
 }
