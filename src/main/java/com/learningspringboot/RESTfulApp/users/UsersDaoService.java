@@ -8,8 +8,6 @@ import java.util.function.Predicate;
 
 import org.springframework.stereotype.Component;
 
-import com.learningspringboot.RESTfulApp.exception.UserNotFoundException;
-
 /**
  * DAO stands for Data Access Object
  */

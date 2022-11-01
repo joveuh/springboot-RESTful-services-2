@@ -14,6 +14,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.learningspringboot.RESTfulApp.exception.UserNotFoundException;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserResourceController {
 
@@ -38,7 +40,7 @@ public class UserResourceController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User savedUser = service.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
                 .toUri();
