@@ -3,6 +3,22 @@ package com.learningspringboot.RESTfulApp.versioning;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Factors to consider:
+ * 
+ *  1) URI Pollution with versioning
+ *  2) Headers were not supposed to be used to implement versioning
+ *  3) Caching: When it comes to Headers versioning or Media Type versioning you
+ *  cannot cache based on just the URL. You'll also need to look at Headers.
+ *  4) Can we execite request on the browser. When it comes Headers versioning or
+ *  Media Type versioning the differentiation is in the headers. Typically, you
+ *  will require a client for this or command-line utility.
+ *  5) Typically, for URI versioning and request parameter versioning documenting
+ *  is easier because the URLs are different for both versions.
+ *  6) Typically, API documenting tools may not document based on versioning
+ *  differentiated on headers. So, Headers versioning or Media Type versioning
+ *  might be a little difficult.
+ */
 @RestController
 public class VersioningPersonController {
 
