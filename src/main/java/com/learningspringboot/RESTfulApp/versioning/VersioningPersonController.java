@@ -41,7 +41,7 @@ public class VersioningPersonController {
     public PersonV2 getVersionedPerson2() {
         return new PersonV2(new Name("Bob", "Charlie"));
     }
-
+ 
     @GetMapping(path = "/person/header", headers = "RANDOM-HEADER=1")
     public PersonV1 getHeaderedPerson1() {
         return new PersonV1("Bob Charlie");
