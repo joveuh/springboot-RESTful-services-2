@@ -1,6 +1,9 @@
 package com.learningspringboot.RESTfulApp.users;
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
@@ -8,9 +11,11 @@ public class User {
 
     private Integer Id;
 
+    @JsonProperty("User_name")
     @Size(min=2, max=50, message = "Name should be between 2-50")
     private String name;
 
+    @JsonProperty("Birth_date")
     @Past(message = "Birthday should not be in the future")
     private LocalDate birthDate;
 
