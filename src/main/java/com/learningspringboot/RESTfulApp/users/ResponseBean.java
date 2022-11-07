@@ -1,14 +1,17 @@
 package com.learningspringboot.RESTfulApp.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// @JsonIgnoreProperties is specified on a class
+@JsonIgnoreProperties("field1")
 public class ResponseBean {
     
     String field1;
 
     @JsonIgnore
     String field2;
-    
+
     String field3;
 
     public ResponseBean(String field1, String field2, String field3) {
