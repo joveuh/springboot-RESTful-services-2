@@ -1,20 +1,22 @@
 package com.learningspringboot.RESTfulApp.users;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // @JsonIgnoreProperties is specified on a class
-@JsonIgnoreProperties("field1")
-public class ResponseBean {
+// @JsonIgnoreProperties("field1")
+@JsonFilter("Filter1")
+public class FilteringResponseBean {
     
     String field1;
 
-    @JsonIgnore
+    // @JsonIgnore
     String field2;
 
     String field3;
 
-    public ResponseBean(String field1, String field2, String field3) {
+    public FilteringResponseBean(String field1, String field2, String field3) {
         this.field1 = field1;
         this.field2 = field2;
         this.field3 = field3;
