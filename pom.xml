@@ -75,6 +75,20 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		
+
+        <!-- If your apps are using Hal, then you can use Hal Explorer to explore your APIs.
+        The biggest advantage of using Hal Explorer is that it enables your non-technical teams also to play
+        with your APIs.
+
+        Springboard Hal Explorer Auto Configures HAL Explorer for Springboard Projects.
+        So if you want to use HAL Explorer in your spring boot projects, the easiest way to do that is by using
+        Spring Boot. -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-hal-explorer</artifactId>
+		</dependency>
+		
+
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
