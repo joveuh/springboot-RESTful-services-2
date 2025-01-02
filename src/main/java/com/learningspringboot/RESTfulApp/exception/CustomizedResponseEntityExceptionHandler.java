@@ -1,5 +1,6 @@
 package com.learningspringboot.RESTfulApp.exception;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 
 import org.springframework.http.HttpHeaders;
